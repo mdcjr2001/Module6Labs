@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SingleCat from "./SingleCat";
+import AddCatForm from "./AddCatForm";
 
 const cats = [
   {
@@ -76,8 +77,13 @@ const BigCats = () => {
     setBigCatsList(bigCatsList.filter((cat) => cat.name !== catName));
   };
 
+  const addNewCat = (newCat) => {
+    setBigCatsList([...bigCatsList, newCat]);
+  };
+
   return (
     <>
+      <AddCatForm onAddCat={addNewCat} />
       <div className="big-cats-list">
         {bigCatsList.map((cat, id) => (
           <SingleCat key={id} cat={cat} onDelete={deleteCat} />
